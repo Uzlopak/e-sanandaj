@@ -1,8 +1,10 @@
 <?php
 
 require 'scraperwiki.php';
+$pagecount = 2633;
+
 $endtime = time() + (60 * 60) * 23; //23h 
-	for ($page = 1; $page <= 1; $page++) {
+	for ($page = 1; $page <= $pagecount; $page++) {
 	
 	print $page;
 	ripByPage($page);
@@ -29,6 +31,6 @@ function ripByPage($page){
 				'identitycode' => strVal($resultingJsonObject->{'result'}[$id]->{'IdentityCode'})
 			);
 	        scraperwiki::save_sqlite(array('data'), $entry);
-	        var_dump($entry);
+	        $pagecount =  $resultingJsonObject->{'PageNumber'};
 	}
 }
