@@ -17,7 +17,7 @@ function ripByPage($page){
 	for ($id = 0; $id <= 9; $id++)
         {
         	$entry = array(
-				'id'      => strVal($resultingJsonObject->{'result'}[$id]->{'Id'}),
+				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'},
 				'fullname' => strVal($resultingJsonObject->{'result'}[$id]->{'DeadFullName'}),
 				'fathername' => strVal($resultingJsonObject->{'result'}[$id]->{'DeadFatherName'}),
 				'birthdate' => strVal($resultingJsonObject->{'result'}[$id]->{'BornDate'}),
