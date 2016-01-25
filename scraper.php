@@ -10,23 +10,7 @@ for ($page = 0; $page <= 2; $page++) {
 	$i = 1;
 	$delay = 250000;
 	  print $page;
-	  while (!validateEntry($id))
 	  {
-	    print ".";
-	  	$delay = $delay + $i * 250000;
-	  	//limit to 5 secs
-	  	if ($delay > 5000000) {
-	  		$delay = 5000000;
-	  	}
-	  	if ($i % 20 == 0)
-	  	{
-	  		$delay = 60000000;
-	  	}
-	  	if ($i == 61)
-	  	{
-	  		exit;
-	  	}
-	    usleep($delay);
 	    ripByPage($page);
 	    $i++;
 	  print "!";
