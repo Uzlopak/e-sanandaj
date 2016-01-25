@@ -18,20 +18,17 @@ function ripByPage($page){
         {
 	        scraperwiki::save_sqlite(array('data'), 
 			array(
-				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'}
-				/*
-				,
-				'fullname' => $record->DeadFullName,
-				'fathername' => $record->DeadFatherName, 
-				'birthdate' => $record->BornDate, 
-				'deathdate' => $record->DeathDate,
-				'partNo' => $record->PartNo,
-				'rowNo' => $record->RowNo,
-				'graveNo' => $record->GraveNo,
-				'gender'  => $record->Gender,
-				'identityCode' => $record->IdentityCode,
-				'photoTag' => $record->PhotoTag
-				*/
+				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'},
+				'fullname' => $resultingJsonObject->{'result'}[$id]->{'DeadFullName'},
+				'fathername' => $resultingJsonObject->{'result'}[$id]->{'DeadFatherName'},
+				'birthdate' => $resultingJsonObject->{'result'}[$id]->{'BornDate'},
+				'deathdate' => $resultingJsonObject->{'result'}[$id]->{'DeathDate'},
+				'partNo' => $resultingJsonObject->{'result'}[$id]->{'PartNo'},
+				'rowNo' => $resultingJsonObject->{'result'}[$id]->{'RowNo'},
+				'graveNo' => $resultingJsonObject->{'result'}[$id]->{'GraveNo'},
+				'gender'  => $resultingJsonObject->{'result'}[$id]->{'Gender'},
+				'identityCode' => $resultingJsonObject->{'result'}[$id]->{'IdentityCode'},
+				'photoTag' => $resultingJsonObject->{'result'}[$id]->{'PhotoTag'}
 			)
 		);
 	}
