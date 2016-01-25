@@ -16,8 +16,7 @@ function ripByPage($page){
 	$resultingJsonObject = json_decode($output);
 	for ($id = 0; $id <= 10; $id++)
         {
-	        scraperwiki::save_sqlite(array('data'), 
-			array(
+        	$entry = array(
 				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'},
 				'fullname' => $resultingJsonObject->{'result'}[$id]->{'DeadFullName'},
 				'fathername' => $resultingJsonObject->{'result'}[$id]->{'DeadFatherName'},
@@ -29,7 +28,8 @@ function ripByPage($page){
 				'gender'  => $resultingJsonObject->{'result'}[$id]->{'Gender'},
 				'identityCode' => $resultingJsonObject->{'result'}[$id]->{'IdentityCode'},
 				'photoTag' => $resultingJsonObject->{'result'}[$id]->{'PhotoTag'}
-			)
-		);
+			);
+	        scraperwiki::save_sqlite(array('data'), $entry);
+	        var_dump($entry);
 	}
 }
