@@ -9,9 +9,7 @@ for ($page = 0; $page <= 2; $page++) {
 	}
 	$i = 1;
 	$delay = 250000;
-	  if (!validateEntry($id))
-	  {
-	  print $id;
+	  print $page;
 	  while (!validateEntry($id))
 	  {
 	    print ".";
@@ -29,9 +27,8 @@ for ($page = 0; $page <= 2; $page++) {
 	  		exit;
 	  	}
 	    usleep($delay);
-	    ripById($id);
+	    ripByPage($page);
 	    $i++;
-	  }
 	  print "!";
   }
 }
