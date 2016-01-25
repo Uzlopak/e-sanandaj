@@ -22,9 +22,11 @@ function ripByPage($page){
 				'fathername' => $resultingJsonObject->{'result'}[$id]->{'DeadFatherName'},
 				'birthdate' => $resultingJsonObject->{'result'}[$id]->{'BornDate'},
 				'deathdate' => $resultingJsonObject->{'result'}[$id]->{'DeathDate'},
-				'partNo' => $resultingJsonObject->{'result'}[$id]->{'PartNo'},
-				'rowNo' => $resultingJsonObject->{'result'}[$id]->{'RowNo'},
-				'graveNo' => $resultingJsonObject->{'result'}[$id]->{'GraveNo'}
+				'partNo' => strVal($resultingJsonObject->{'result'}[$id]->{'PartNo'}),
+				'rowNo' => strVal($resultingJsonObject->{'result'}[$id]->{'RowNo'}),
+				'graveNo' => strVal($resultingJsonObject->{'result'}[$id]->{'GraveNo'}),
+				'gender'  => $resultingJsonObject->{'result'}[$id]->{'Gender'},
+				'identityCode' => $resultingJsonObject->{'result'}[$id]->{'IdentityCode'}
 			);
 	        scraperwiki::save_sqlite(array('data'), $entry);
 	        var_dump($entry);
