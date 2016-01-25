@@ -17,16 +17,16 @@ function ripByPage($page){
 	for ($id = 0; $id <= 9; $id++)
         {
         	$entry = array(
-				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'},
-				'fullname' => $resultingJsonObject->{'result'}[$id]->{'DeadFullName'},
-				'fathername' => $resultingJsonObject->{'result'}[$id]->{'DeadFatherName'},
-				'birthdate' => $resultingJsonObject->{'result'}[$id]->{'BornDate'},
-				'deathdate' => $resultingJsonObject->{'result'}[$id]->{'DeathDate'},
-				'partNo' => strVal($resultingJsonObject->{'result'}[$id]->{'PartNo'}),
-				'rowNo' => strVal($resultingJsonObject->{'result'}[$id]->{'RowNo'}),
-				'graveNo' => strVal($resultingJsonObject->{'result'}[$id]->{'GraveNo'}),
-				'gender'  => $resultingJsonObject->{'result'}[$id]->{'Gender'},
-				'identityCode' => $resultingJsonObject->{'result'}[$id]->{'IdentityCode'}
+				'id'      => strVal($resultingJsonObject->{'result'}[$id]->{'Id'}),
+				'fullname' => strVal($resultingJsonObject->{'result'}[$id]->{'DeadFullName'}),
+				'fathername' => strVal($resultingJsonObject->{'result'}[$id]->{'DeadFatherName'}),
+				'birthdate' => strVal($resultingJsonObject->{'result'}[$id]->{'BornDate'}),
+				'deathdate' => strVal($resultingJsonObject->{'result'}[$id]->{'DeathDate'}),
+				'partno' => strVal($resultingJsonObject->{'result'}[$id]->{'PartNo'}),
+				'rowno' => strVal($resultingJsonObject->{'result'}[$id]->{'RowNo'}),
+				'graveno' => strVal($resultingJsonObject->{'result'}[$id]->{'GraveNo'}),
+				'gender'  => strVal($resultingJsonObject->{'result'}[$id]->{'Gender'}),
+				'identitycode' => strVal($resultingJsonObject->{'result'}[$id]->{'IdentityCode'})
 			);
 	        scraperwiki::save_sqlite(array('data'), $entry);
 	        var_dump($entry);
