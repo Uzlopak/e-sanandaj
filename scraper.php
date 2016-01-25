@@ -14,8 +14,7 @@ function ripByPage($page){
 	$output = scraperwiki::scrape($pathToDetails);
 	
 	$resultingJsonObject = json_decode($output);
-	for ($id = 0; $id <= 10; $id++) {
-        for ($resultingJsonObject->{'result'} as $record) 
+	for ($id = 0; $id <= 10; $id++)
         {
 	        scraperwiki::save_sqlite(array('data'), 
 			array(
