@@ -17,7 +17,9 @@ function ripByPage($page){
 	for ($id = 0; $id <= 9; $id++)
         {
         	$entry = array(
-				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'}
+				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'},
+				'fullname' => $resultingJsonObject->{'result'}[$id]->{'DeadFullName'},
+				'fathername' => $resultingJsonObject->{'result'}[$id]->{'DeadFatherName'}
 			);
 	        scraperwiki::save_sqlite(array('data'), $entry);
 	        var_dump($entry);
