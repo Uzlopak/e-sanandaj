@@ -51,8 +51,6 @@ function ripByPage($page){
 	                          'fathername' => $record->DeadFatherName, 
 	                          'birthdate' => $record->BornDate, 
 	                          'deathdate' => $record->DeathDate,
-	                          'deathplace' => $record->$deathplace, 
-	                          'graveplace' => $record->$graveplace,
 	                          'partNo' => $record->PartNo,
 	                          'rowNo' => $record->RowNo,
 	                          'graveNo' => $record->GraveNo,
