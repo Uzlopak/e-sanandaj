@@ -2,7 +2,7 @@
 
 require 'scraperwiki.php';
 $endtime = time() + (60 * 60) * 23; //23h 
-	for ($page = 0; $page <= 2; $page++) {
+	for ($page = 1; $page <= 1; $page++) {
 	
 	print $page;
 	ripByPage($page);
@@ -14,11 +14,14 @@ function ripByPage($page){
 	$output = scraperwiki::scrape($pathToDetails);
 	
 	$resultingJsonObject = json_decode($output);
-        foreach ($resultingJsonObject->{'result'} as $record) 
+	for ($id = 0; $id <= 10; $id++) {
+        for ($resultingJsonObject->{'result'} as $record) 
         {
 	        scraperwiki::save_sqlite(array('data'), 
 			array(
-				'id'      => $record->Id,
+				'id'      => $resultingJsonObject->{'result'}[$id]->{'Id'}
+				/*
+				,
 				'fullname' => $record->DeadFullName,
 				'fathername' => $record->DeadFatherName, 
 				'birthdate' => $record->BornDate, 
@@ -29,7 +32,9 @@ function ripByPage($page){
 				'gender'  => $record->Gender,
 				'identityCode' => $record->IdentityCode,
 				'photoTag' => $record->PhotoTag
+				*/
 			)
 		);
+	}
 	}
 }
