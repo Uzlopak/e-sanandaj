@@ -1,27 +1,84 @@
-<?
-// This is a template for a PHP scraper on morph.io (https://morph.io)
-// including some code snippets below that you should find helpful
 
-// require 'scraperwiki.php';
-// require 'scraperwiki/simple_html_dom.php';
-//
-// // Read in a page
-// $html = scraperwiki::scrape("http://foo.com");
-//
-// // Find something on the page using css selectors
-// $dom = new simple_html_dom();
-// $dom->load($html);
-// print_r($dom->find("table.list"));
-//
-// // Write out to the sqlite database using scraperwiki library
-// scraperwiki::save_sqlite(array('name'), array('name' => 'susan', 'occupation' => 'software developer'));
-//
-// // An arbitrary query against the database
-// scraperwiki::select("* from data where 'name'='peter'")
-
-// You don't have to do things with the ScraperWiki library.
-// You can use whatever libraries you want: https://morph.io/documentation/php
-// All that matters is that your final data is written to an SQLite database
-// called "data.sqlite" in the current working directory which has at least a table
-// called "data".
-?>
+<?php
+require 'scraperwiki.php';
+$endtime = time() + (60 * 60) * 23; //23h 
+for ($page = 0; $page <= 2; $page++) {
+	if ($endtime <= time())
+	{
+		exit;
+	}
+	$i = 1;
+	$delay = 250000;
+	  if (!validateEntry($id))
+	  {
+	  print $id;
+	  while (!validateEntry($id))
+	  {
+	    print ".";
+	  	$delay = $delay + $i * 250000;
+	  	//limit to 5 secs
+	  	if ($delay > 5000000) {
+	  		$delay = 5000000;
+	  	}
+	  	if ($i % 20 == 0)
+	  	{
+	  		$delay = 60000000;
+	  	}
+	  	if ($i == 61)
+	  	{
+	  		exit;
+	  	}
+	    usleep($delay);
+	    ripById($id);
+	    $i++;
+	  }
+	  print "!";
+  }
+}
+function ripByPage($page){
+	$pathToDetails = 'http://aramestan.e-sanandaj.ir/BurialRequest/DeadSearch?keyword=&firstName=&lastName=&fatherName=&partNo=0&rowNo=&graveNo=&deathDateFrom=&deathDateTo=&bornDateFrom=&bornDateTo=&page=' . $page;
+	
+	$output = scraperwiki::scrape($pathToDetails);
+	
+	$resultingJsonObject = json_decode($output)
+        foreach ($resultingJsonObject->{'result'} as $record) 
+        {
+        
+	scraperwiki::save_sqlite(array('data'), 
+	                    array(
+	                          'id'      => $record->Id,
+	                          'fullname' => $record->DeadFullName,
+	                          'fathername' => $record->DeadFatherName, 
+	                          'birthdate' => $record->BornDate, 
+	                          'deathdate' => $record->DeathDate,
+	                          'deathplace' => $record->$deathplace, 
+	                          'graveplace' => $record->$graveplace,
+	                          'partNo' => $record->PartNo,
+	                          'rowNo' => $record->RowNo,
+	                          'graveNo' => $record->GraveNo,
+	                          'gender'  => $record->Gender,
+	                          'identityCode' => $record->IdentityCode,
+	                          'photoTag' => $record->PhotoTag
+	                          ));
+        }
+}
+function validateEntry($id){
+	$result = false;
+	// Set total number of rows
+	try {
+	$recordSet = scraperwiki::select("* from data where id ='". $id . "'");
+	if (!empty($recordSet[0]['id'])) {
+		if ($recordSet[0]['surname'] != ""){
+			$result = true;	
+		}
+		if ($recordSet[0]['firstname'] != ""){
+			$result = true;	
+		}
+		if ($recordSet[0]['fathername'] != ""){
+			$result = true;	
+		}
+	} 
+	} catch (Exception $e) {
+	}
+	return $result;
+}
