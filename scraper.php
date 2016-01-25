@@ -1,10 +1,10 @@
 <?php
 
 require 'scraperwiki.php';
-$pagecount = 2633;
+$pagecount = 2634;
 
 $endtime = time() + (60 * 60) * 23; //23h 
-	for ($page = 1415; $page <= $pagecount; $page++) {
+	for ($page = 2633; $page <= $pagecount; $page++) {
 	
 	print $page;
 	ripByPage($page);
