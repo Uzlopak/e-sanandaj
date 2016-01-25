@@ -40,7 +40,7 @@ function ripByPage($page){
 	
 	$output = scraperwiki::scrape($pathToDetails);
 	
-	$resultingJsonObject = json_decode($output)
+	$resultingJsonObject = json_decode($output);
         foreach ($resultingJsonObject->{'result'} as $record) 
         {
         
