@@ -35,5 +35,4 @@ function ripByPage($page){
 			)
 		);
 	}
-	}
 }
