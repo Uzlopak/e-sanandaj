@@ -18,17 +18,17 @@ function ripByPage($page){
         {
 	        scraperwiki::save_sqlite(array('data'), 
 			array(
-				'id'      => $record->Id,
-				'fullname' => $record->DeadFullName,
-				'fathername' => $record->DeadFatherName, 
-				'birthdate' => $record->BornDate, 
-				'deathdate' => $record->DeathDate,
-				'partNo' => $record->PartNo,
-				'rowNo' => $record->RowNo,
-				'graveNo' => $record->GraveNo,
-				'gender'  => $record->Gender,
-				'identityCode' => $record->IdentityCode,
-				'photoTag' => $record->PhotoTag
+				'id'      => $record_>{'Id'},
+				'fullname' => $record->{'DeadFullName'},
+				'fathername' => $record->{'DeadFatherName'}, 
+				'birthdate' => $record->{'BornDate'}, 
+				'deathdate' => $record->{'DeathDate'},
+				'partNo' => $record->{'PartNo'},
+				'rowNo' => $record->{'RowNo'},
+				'graveNo' => $record->{'GraveNo'},
+				'gender'  => $record->{'Gender'},
+				'identityCode' => $record->{'IdentityCode'},
+				'photoTag' => $record->{'PhotoTag'}
 			)
 		);
 	}
