@@ -57,23 +57,3 @@ function ripByPage($page){
 	                          ));
         }
 }
-function validateEntry($id){
-	$result = false;
-	// Set total number of rows
-	try {
-	$recordSet = scraperwiki::select("* from data where id ='". $id . "'");
-	if (!empty($recordSet[0]['id'])) {
-		if ($recordSet[0]['surname'] != ""){
-			$result = true;	
-		}
-		if ($recordSet[0]['firstname'] != ""){
-			$result = true;	
-		}
-		if ($recordSet[0]['fathername'] != ""){
-			$result = true;	
-		}
-	} 
-	} catch (Exception $e) {
-	}
-	return $result;
-}
